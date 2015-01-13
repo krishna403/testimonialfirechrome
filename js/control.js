@@ -1,33 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <script>
-    document.createElement('article');
-    document.createElement('footer');
-    </script>
-
-    <!-- script used for audio/video/gif recording -->
-    <script src="js/record.js"></script>
-</head>
-
-<body>
-        <section class="experiment">
-            <h2 class="header">Testimonial! </h2>
-            <p style="text-align:center;">
-                <video id="preview" controls style="border: 1px solid rgb(15, 158, 238); height: 240px; width: 320px;"></video>
-            </p>
-            <hr />
-            <button id="record">Record</button>
-            <button id="stop" disabled>Stop</button>
-            <button id="delete" disabled>Delete recent files</button>
-            <div id="container" style="padding:1em 2em;"></div>
-        </section>
-
-
-      <script>
-        // PostBlob method uses XHR2 and FormData to submit 
+ // PostBlob method uses XHR2 and FormData to submit 
         // recorded blob to the PHP server
         function PostBlob(blob, fileType, fileName) {
             // FormData
@@ -89,6 +60,8 @@
     if(!isFirefox){
         var recordAudio, recordVideo;
         record.onclick = function() {
+         
+        
         record.disabled = true;
             
             navigator.getUserMedia({
@@ -145,7 +118,7 @@
         stop.onclick = function() {
             record.disabled = false;
             stop.disabled = true;
-            preview.src = '';
+            preview.src = null;
 
             fileName = Math.round(Math.random() * 99999999) + 99999999;
 
@@ -230,6 +203,9 @@
   //              deleteAudioVideoFiles();
   //              return 'It seems that you\'ve not deleted audio/video files from the server.';
   //          }
+  //      };
+        
+        
         
         function captureUserMedia(callback) {
             navigator.getUserMedia = navigator.mozGetUserMedia;
@@ -248,6 +224,3 @@
                 console.error(error);
             });
         }
-        </script>
-</body>
-</html>
